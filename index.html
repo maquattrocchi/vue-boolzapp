@@ -12,77 +12,79 @@
 </head>
 <body>
     <div class="main_container">
-        <div id="app">
-            <div class="d-flex h-100">
-                <div class="col-4 cs_border">
-                    <div class="header">
-                        <div class="d-flex align-items-center">
-                            <img src="img/avatar_io.jpg" alt="avatar">
-                            <span>Martina</span>
-                        </div>
-                        <div class="icons_box">
-                            <i class="fa-solid fa-circle-notch"></i>
-                            <i class="fa-solid fa-message"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
+        <div id="app" class="d-flex">
+            <div class="col-12 col-lg-4 cs_border">
+                <div class="header">
+                    <div class="d-flex align-items-center">
+                        <img src="img/avatar_io.jpg" alt="avatar">
+                        <span>Martina</span>
                     </div>
-
-                    <div class="notifiche">
-                        <i class="fa-solid fa-bell-slash"></i>
-                        <div>
-                            <p class="m-0 fw-bold">Ricevi notifiche di nuovi messaggi</p>
-                            <span class="text-decoration-underline">Attiva notifiche desktop</span>
-                        </div>
-                    </div>
-
-                    <div class="input_box input-group">
-                        <span class="input-group-text" ><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
-                    </div>
-
-                    <div class="chats">
-                        <div class="chat border-bottom" v-for="(item, index) in contacts">
-                            <div class="d-flex">
-                                <img :src="'img/avatar' + item.avatar + '.jpg'" alt="">
-                                <div class="chat-text">
-                                    <p class="m-0 fw-bold">{{item.nome}}</p>
-                                    <p class="m-0">{{item.messages.at(-1).message}}</p>
-                                </div>
-                            </div>
-                            <div class="ora align-self-start">{{item.messages.at(-1).date}}</div>
-                        </div>
+                    <div class="icons_box">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
 
+                <div class="notifiche">
+                    <div class="bell-box">
+                        <i class="fa-solid fa-bell-slash"></i>
 
-                <div class="col-8">
-                    <div class="header">
-                        <div class="d-flex align-items-center">
-                            <img :src="'img/avatar' + contacts[currentChat].avatar + '.jpg'" alt="avatar">
-                            <span>{{contacts[currentChat].nome}}</span>
-                        </div>
-                        <div class="icons_box">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <i class="fa-solid fa-paperclip"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
                     </div>
-    
-                    <div class="chat-messages d-flex flex-column gap-3">
-                        <div class="message sent">
-                            <span>aaa ahshdk ashbd sdhbcd dbchdb dfhdhvf fdvfdhvufdh fdhvudfhv fvhidfuhsf</span>
-                            <span class="message-hour">14:00</span>
-                        </div>
-                        <div class="message received">
-                            <span>aaa ahshdk ashbd sdhbcd dbchdb dfhdhvf fdvfdhvufdh fdhvudfhv fvhidfuhsf</span>
-                            <span class="message-hour">14:00</span>
-                        </div>
-                        <div class="message received">
-                            <span>aaa ahshdk ashbd sdhbcd dbchdb dfhdhvf fdvfdhvufdh fdhvudfhv fvhidfuhsf</span>
-                            <span class="message-hour">14:00</span>
-                        </div>
+                    <div>
+                        <p class="m-0 fw-bold">Ricevi notifiche di nuovi messaggi</p>
+                        <span class="text-decoration-underline">Attiva notifiche desktop</span>
                     </div>
-                    <div class="footer">aaa</div>
+                </div>
+
+                <div class="input_box input-group">
+                    <span class="input-group-text" ><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                </div>
+
+                <div class="chats">
+                    <div class="chat border-bottom" v-for="(item, index) in contacts" :class="{active : index === currentChat}" @click="currentChat = index">
+                        <div class="d-flex">
+                            <img :src="'img/avatar' + item.avatar + '.jpg'" alt="">
+                            <div class="chat-text">
+                                <p class="m-0 fw-bold">{{item.nome}}</p>
+                                <p class="m-0">{{item.messages.at(-1).message}}</p>
+                            </div>
+                        </div>
+                        <div class="ora align-self-start">{{item.messages.at(-1).date}}</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="d-none d-lg-block col-lg-8">
+                <div class="header">
+                    <div class="d-flex align-items-center">
+                        <img :src="'img/avatar' + contacts[currentChat].avatar + '.jpg'" alt="avatar">
+                        <span>{{contacts[currentChat].nome}}</span>
+                    </div>
+                    <div class="icons_box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+
+                <div class="chat-messages d-flex flex-column gap-3">
+                    <div class="message" v-for="(item,index) in contacts[currentChat].messages" :class="item.status === 'sent' ? 'sent' : 'received'">
+                        <span>{{item.message}}</span>
+                        <span class="message-hour">{{item.date}}</span>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <div class="emoticon">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Scrivi un messaggio">
+                    <div class="microphone">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
                 </div>
             </div>
         </div>

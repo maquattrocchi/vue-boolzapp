@@ -54,7 +54,7 @@ const app = new Vue({
             {
                 nome: 'Peppe',
                 avatar: '_3',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '15:30',
@@ -76,7 +76,7 @@ const app = new Vue({
             {
                 nome: 'Ori',
                 avatar: '_4',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '15:30',
@@ -98,7 +98,7 @@ const app = new Vue({
             {
                 nome: 'Myxi',
                 avatar: '_5',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '15:30',
@@ -120,7 +120,7 @@ const app = new Vue({
             {
                 nome: 'Antonio',
                 avatar: '_6',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '15:30',
@@ -142,7 +142,7 @@ const app = new Vue({
             {
                 nome: 'Giorgia',
                 avatar: '_7',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '15:30',
@@ -164,7 +164,7 @@ const app = new Vue({
             {
                 nome: 'Luca',
                 avatar: '_8',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '15:30',
@@ -187,6 +187,6 @@ const app = new Vue({
         currentChat: 0,
     },
     methods: {
-
+        
     }
 })

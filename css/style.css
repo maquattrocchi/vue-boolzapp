@@ -49,6 +49,8 @@ grigio chat alto: #EAEAEA
     gap: 1rem;
     height: 75px;
     padding: 1rem;
+    line-height: 1.1rem;
+
 }
 .notifiche .fa-bell-slash{
     background-color: #F2FBFF;
@@ -83,6 +85,13 @@ grigio chat alto: #EAEAEA
     justify-content: space-between;
     gap: 1rem;
     padding: 1rem;
+    cursor: pointer;
+}
+.chat:hover{
+    background-color: #f0f0f0;
+}
+.chat.active{
+    background-color: #d8d8d8;
 }
 .chat img{
     width: 50px;
@@ -96,7 +105,7 @@ grigio chat alto: #EAEAEA
 }
 /* right side */
 .chat-messages{
-    height: calc(100% - 155px);
+    height: calc(100% - 130px);
     background-image: url(../img/mine.jpg);
     overflow-y: scroll;
     padding: 2rem;
@@ -115,12 +124,36 @@ grigio chat alto: #EAEAEA
     background-color: #fff;
 }
 .chat-messages .message-hour{
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #B1B1B1;
     position: absolute;
     right: 0.5rem;
-    bottom: 0.5rem;
+    bottom: 0.2rem;
 }
 .footer{
-    height: 80px;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.footer .emoticon, 
+.footer .microphone{
+    padding: 0 2rem;
+    font-size: 1.5rem;
+}
+/* media */
+@media screen and (min-width: 992px) and (max-width: 1199px){
+    .chat-text p:last-child{
+        width: 120px;
+    }
+    .notifiche .fa-bell-slash{
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+}
+@media screen and (max-width: 768px){
+    .chat-text p:last-child{
+        width: 320px;
+    }
 }
