@@ -99,6 +99,27 @@ grigio chat alto: #EAEAEA
     height: calc(100% - 155px);
     background-image: url(../img/mine.jpg);
     overflow-y: scroll;
+    padding: 2rem;
+}
+.chat-messages .message{
+    max-width: 45%;
+    padding: 1rem;
+    border-radius: 10px;
+    position: relative;
+}
+.message.sent{
+    align-self: flex-end;
+    background-color: #D5F9BA;
+}
+.message.received{
+    background-color: #fff;
+}
+.chat-messages .message-hour{
+    font-size: 0.8rem;
+    color: #B1B1B1;
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
 }
 .footer{
     height: 80px;
