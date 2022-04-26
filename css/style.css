@@ -1,0 +1,105 @@
+/*
+verde sfondo: #009688
+grigio sfondo: #DBDBD2
+grigio chat alto: #EAEAEA
+*/
+.main_container{
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(0,150,136,1) 15%, rgba(219,219,210,1) 15%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#app{
+    width: 80%;
+    height: 90%;
+    background-color: #EAEAEA;
+}
+/* left side */
+/* header */
+#app 
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+    padding: 0 1rem;
+    font-size: 1.2rem;
+}
+.header img{
+    width: 50px;
+    border-radius: 50%;
+}
+.cs_border{
+    border-right: 1px solid #DBDBD2;
+}
+.header .icons_box{
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+.icons_box .fa-solid{
+    color: #B1B1B1;
+}
+/* notifiche */
+.notifiche{
+    display: flex;
+    background-color: #8EDAFC;
+    align-items: center;
+    gap: 1rem;
+    height: 75px;
+    padding: 1rem;
+}
+.notifiche .fa-bell-slash{
+    background-color: #F2FBFF;
+    color: #8EDAFC;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 50%;
+}
+.notifiche p{
+    font-weight: bold;
+}
+/* input */
+.input_box{
+    background-color: #FAFAFA;
+    padding: 0.5rem;
+}
+.input_box span{
+    background-color: #fff;
+}
+/* chats */
+.chats{
+    background-color: #FFFFFF;
+    height: calc(100% - 194px);
+    overflow-y: scroll;
+}
+.chat{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+}
+.chat img{
+    width: 50px;
+    border-radius: 50%;
+}
+.chat-text p:last-child{
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+/* right side */
+.chat-messages{
+    height: calc(100% - 155px);
+    background-image: url(../img/mine.jpg);
+    overflow-y: scroll;
+}
+.footer{
+    height: 80px;
+}
