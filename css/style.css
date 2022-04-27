@@ -106,12 +106,14 @@ grigio chat alto: #EAEAEA
     text-overflow: ellipsis;
 }
 /* right side */
+/* chat */
 .chat-messages{
     height: calc(100% - 130px);
     background-image: url(../img/mine.jpg);
     overflow-y: scroll;
     padding: 2rem;
 }
+/* message */
 .chat-messages .message{
     max-width: 45%;
     padding: 1rem;
@@ -133,17 +135,34 @@ grigio chat alto: #EAEAEA
     right: 0.5rem;
     bottom: 0.2rem;
 }
-.message .fa-angle-down{
+.message .dropdown-message{
     position: absolute;
     top: 0.2rem;
     right: 0.5rem;
     display: none;
     font-size: 1.2rem;
-    transition: all 3s;
 }
-.message:hover .fa-angle-down{
+.message:hover .dropdown-message{
     display: block;
 }
+/* info message */
+.info-message{
+    width: 232px;
+    background-color: #fff;
+    list-style: none;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    padding: 0.5rem 0;
+    display: none;
+}
+.info-message li{
+    padding: 0.5rem 1rem;
+}
+.info-message li:hover{
+    background-color: #f0f0f0;
+}
+/* footer */
 .footer{
     height: 65px;
     display: flex;
@@ -151,9 +170,11 @@ grigio chat alto: #EAEAEA
     align-items: center;
 }
 .footer .emoticon, 
-.footer .microphone{
+.footer .microphone,
+.footer .fa-paper-plane{
     padding: 0 2rem;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 /* media */
 @media screen and (min-width: 992px) and (max-width: 1200px){

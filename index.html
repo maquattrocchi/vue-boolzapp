@@ -49,10 +49,12 @@
                             <img :src="'img/avatar' + item.avatar + '.jpg'" alt="">
                             <div class="chat-text">
                                 <p class="m-0 fw-bold">{{item.nome}}</p>
-                                <p class="m-0">{{item.messages.at(-1).message}}</p>
+                                <p v-if="item.messages.length < 1" class="m-0"></p>
+                                <p v-else class="m-0">{{item.messages.at(-1).message}}</p>
                             </div>
                         </div>
-                        <div class="align-self-start">{{item.messages.at(-1).date}}</div>
+                        <div class="align-self-start" v-if="item.messages.length < 1"></div>
+                        <div v-else class="align-self-start">{{item.messages.at(-1).date}}</div>
                     </li>
                 </ul>
             </div>
@@ -71,12 +73,20 @@
                 </div>
 
                 <div class="chat-messages d-flex flex-column gap-3">
-                    <div class="message" v-for="(item,index) in contacts[currentChat].messages" :class="item.status === 'sent' ? 'sent' : 'received'">
+                    <div v-if="contacts[currentChat].messages.length < 1"></div>
+                    <div v-else class="message" v-for="(item,index) in contacts[currentChat].messages" :class="item.status === 'sent' ? 'sent' : 'received'">
                         <span>{{item.message}}</span>
                         <span class="message-hour">{{item.date}}</span>
-                        <i class="fa-solid fa-angle-down">
-                            
-                        </i>
+                        <span class="dropdown-message" @click="item.showInfo = !item.showInfo">
+                            <i class="fa-solid fa-angle-down">
+                            </i>
+                            <ul class="info-message" :class="{'d-block' : item.showInfo}">
+                                <li>Rispondi</li>
+                                <li>Inoltra messaggio</li>
+                                <li>Messaggio importante</li>
+                                <li @click="deleteMessage(index)">Elimina messaggio</li>
+                            </ul>
+                        </span>
                     </div>
                 </div>
 
@@ -84,8 +94,11 @@
                     <div class="emoticon">
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
-                    <input type="text" class="form-control" placeholder="Scrivi un messaggio" v-model="message" @keyup.enter="sendMessage">
-                    <div class="microphone">
+                    <input type="text" class="form-control" placeholder="Scrivi un messaggio" v-model="newmessage" @keyup.enter="sendMessage">
+                    <div v-if="newmessage.length > 0" class="plane">
+                        <i class="fa-solid fa-paper-plane" @click="sendMessage"></i>
+                    </div>
+                    <div v-else class="microphone">
                         <i class="fa-solid fa-microphone"></i>
                     </div>
                 </div>

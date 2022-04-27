@@ -11,17 +11,20 @@ const app = new Vue({
                     {
                         date: '15:30',
                         message: 'Vuoi venire al cinema stasera?',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false 
                     },
                     {
                         date: '15:33',
                         message: 'A vedere cosa?',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '15:37',
                         message: 'Non so decidiamo sul momento',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                 ]
             },
@@ -34,22 +37,26 @@ const app = new Vue({
                     {
                         date: '15:30',
                         message: 'Ehii, ci sei al compleanno di Luca',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '15:33',
                         message: 'Sii certo',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                     {
                         date: '15:37',
                         message: 'Oh fantastico, non riesco a decidere cosa mettere',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '15:33',
                         message: 'Ah guarda non ne ho idea, parliamo con gli altri e vediamo',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                 ]
             },
@@ -62,22 +69,26 @@ const app = new Vue({
                     {
                         date: '12:30',
                         message: 'Che fai oggi?',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                     {
                         date: '12:31',
                         message: 'Ti va di fare un aperitivo?',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                     {
                         date: '13:37',
                         message: 'Fino alle 6 ho lezione, ma dopo ci sono',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '13:37',
                         message: 'Volevo provare il nuovo locale in centro',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                 ]
             },
@@ -90,27 +101,32 @@ const app = new Vue({
                     {
                         date: '10:30',
                         message: 'Ricordati di stendere i panni',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '10:30',
                         message: 'E di fare la spesa',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '11:00',
                         message: 'Sono già stanca',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                     {
                         date: '11:10',
                         message: 'Ed esci il cane',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '11:37',
                         message: 'Basta vado a vivere da sola',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                 ]
             },
@@ -123,22 +139,26 @@ const app = new Vue({
                     {
                         date: '18:30',
                         message: 'Sono in libreria, ti serve qualcosa?',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                     {
                         date: '18:33',
                         message: 'No grazie',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '18:37',
                         message: 'Anzi si, però ti raggiungo così vediamo insieme',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '18:37',
                         message: 'oks',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                 ]
             },
@@ -151,32 +171,38 @@ const app = new Vue({
                     {
                         date: '02:30',
                         message: 'Frse o bevuto un dpo troppod',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '02:30',
                         message: 'ehdisj',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '02:30',
                         message: 'ci edhiano?',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '02:30',
                         message: 'oooooooooo',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '02:31',
                         message: 'ooooooo',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '02:31',
                         message: 'tii ptefooo',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                 ]
             },
@@ -189,12 +215,14 @@ const app = new Vue({
                     {
                         date: '13:20',
                         message: 'Mi vieni a prendere tu?',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '13:22',
                         message: 'Sisi, 20 minuti e sono da te',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     }
                 ]
             },
@@ -207,36 +235,46 @@ const app = new Vue({
                     {
                         date: '17:30',
                         message: 'Sto prendendo i biglietti per il concerto, confermi che ci sei?',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                     {
                         date: '17:33',
                         message: 'Si ovvio, non me lo perderei mai',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '17:33',
                         message: 'Ma chi siamo?',
-                        status: 'received'
+                        status: 'received',
+                        showInfo: false
                     },
                     {
                         date: '17:50',
                         message: 'Perfetto',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                     {
                         date: '17:50',
                         message: 'Noi, Ori e Peppe',
-                        status: 'sent'
+                        status: 'sent',
+                        showInfo: false
                     },
                 ]
             },
         ],
         currentChat: 0,
-        message: '',
+        newmessage: '',
         search: '',
+        
     },
     methods: {
+        deleteMessage(index){
+            this.contacts[this.currentChat].messages.splice(index, 1)
+            console.log(this.contacts[this.currentChat].messages)
+        },
         changeChat(id){
             const index = this.contacts.findIndex((contact)=>{
                 return contact.id === id
@@ -263,24 +301,28 @@ const app = new Vue({
                 date: this.timeMessage(),
                 message: possibleReply[index],
                 status: 'received',
+                showInfo: false
             };
             this.contacts[this.currentChat].messages.push(reply)
         },
         sendMessage(){
-            const newMess = {
-                date: this.timeMessage(),
-                message: this.message,
-                status: 'sent',
-            };
-            this.contacts[this.currentChat].messages.push(newMess);
-            console.log(this.contacts[this.currentChat].messages);
-            this.message = '';
-            setTimeout(this.getReply, 1000)
-        }
+            if(this.newmessage.length > 0){
+                const newMess = {
+                    date: this.timeMessage(),
+                    message: this.newmessage,
+                    status: 'sent',
+                    showInfo: false
+                };
+                this.contacts[this.currentChat].messages.push(newMess);
+                console.log(this.contacts[this.currentChat].messages);
+                this.newmessage = '';
+                setTimeout(this.getReply, 1000)
+            }
+        },
     },
     computed: {
         filteredContacts(){
             return this.contacts.filter((contact)=> contact.nome.toLowerCase().includes(this.search.toLowerCase()))
-        }
+        },
     }
 })
