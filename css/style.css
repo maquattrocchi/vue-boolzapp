@@ -78,6 +78,7 @@ grigio chat alto: #EAEAEA
     background-color: #FFFFFF;
     height: calc(100% - 194px);
     overflow-y: scroll;
+    padding-left: 0;
 }
 .chat{
     display: flex;
@@ -96,9 +97,10 @@ grigio chat alto: #EAEAEA
 .chat img{
     width: 50px;
     border-radius: 50%;
+    margin-right: 1rem;
 }
 .chat-text p:last-child{
-    width: 180px;
+    width: 155px;
     white-space: nowrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
@@ -115,6 +117,7 @@ grigio chat alto: #EAEAEA
     padding: 1rem;
     border-radius: 10px;
     position: relative;
+    cursor: pointer;
 }
 .message.sent{
     align-self: flex-end;
@@ -130,6 +133,17 @@ grigio chat alto: #EAEAEA
     right: 0.5rem;
     bottom: 0.2rem;
 }
+.message .fa-angle-down{
+    position: absolute;
+    top: 0.2rem;
+    right: 0.5rem;
+    display: none;
+    font-size: 1.2rem;
+    transition: all 3s;
+}
+.message:hover .fa-angle-down{
+    display: block;
+}
 .footer{
     height: 65px;
     display: flex;
@@ -142,9 +156,9 @@ grigio chat alto: #EAEAEA
     font-size: 1.5rem;
 }
 /* media */
-@media screen and (min-width: 992px) and (max-width: 1199px){
+@media screen and (min-width: 992px) and (max-width: 1200px){
     .chat-text p:last-child{
-        width: 120px;
+        width: 100px;
     }
     .notifiche .fa-bell-slash{
         width: 40px;
@@ -154,6 +168,6 @@ grigio chat alto: #EAEAEA
 }
 @media screen and (max-width: 768px){
     .chat-text p:last-child{
-        width: 320px;
+        width: 290px;
     }
 }

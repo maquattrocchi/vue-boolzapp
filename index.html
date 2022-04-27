@@ -29,7 +29,6 @@
                 <div class="notifiche">
                     <div class="bell-box">
                         <i class="fa-solid fa-bell-slash"></i>
-
                     </div>
                     <div>
                         <p class="m-0 fw-bold">Ricevi notifiche di nuovi messaggi</p>
@@ -38,12 +37,14 @@
                 </div>
 
                 <div class="input_box input-group">
-                    <span class="input-group-text" ><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" v-model="search">
                 </div>
 
-                <div class="chats">
-                    <div class="chat border-bottom" v-for="(item, index) in contacts" :class="{active : index === currentChat}" @click="currentChat = index">
+                <ul class="chats">
+                    <li class="chat border-bottom" v-for="(item, index) in filteredContacts" :class="{active : index === currentChat}" @click="changeChat(item.id)">
                         <div class="d-flex">
                             <img :src="'img/avatar' + item.avatar + '.jpg'" alt="">
                             <div class="chat-text">
@@ -51,11 +52,10 @@
                                 <p class="m-0">{{item.messages.at(-1).message}}</p>
                             </div>
                         </div>
-                        <div class="ora align-self-start">{{item.messages.at(-1).date}}</div>
-                    </div>
-                </div>
+                        <div class="align-self-start">{{item.messages.at(-1).date}}</div>
+                    </li>
+                </ul>
             </div>
-
 
             <div class="d-none d-lg-block col-lg-8">
                 <div class="header">
@@ -74,6 +74,9 @@
                     <div class="message" v-for="(item,index) in contacts[currentChat].messages" :class="item.status === 'sent' ? 'sent' : 'received'">
                         <span>{{item.message}}</span>
                         <span class="message-hour">{{item.date}}</span>
+                        <i class="fa-solid fa-angle-down">
+                            
+                        </i>
                     </div>
                 </div>
 
@@ -81,7 +84,7 @@
                     <div class="emoticon">
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
-                    <input type="text" class="form-control" placeholder="Scrivi un messaggio">
+                    <input type="text" class="form-control" placeholder="Scrivi un messaggio" v-model="message" @keyup.enter="sendMessage">
                     <div class="microphone">
                         <i class="fa-solid fa-microphone"></i>
                     </div>
@@ -89,6 +92,7 @@
             </div>
         </div>
     </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>
