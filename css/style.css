@@ -40,6 +40,7 @@ body{
     display: flex;
     gap: 1rem;
     font-size: 1.5rem;
+    position: relative;
 }
 .icons_box .fa-solid{
     color: #B1B1B1;
@@ -120,6 +121,13 @@ body{
     font-size: 1.5rem;
     padding-right: 1rem;
 }
+.chat-header .icons_box .info-message{
+    position: absolute;
+    background-color: #d8d8d8;
+    width: 220px;
+    right: 0;
+    top: 2rem;
+}
 /* message */
 .chat-messages{
     height: calc(100% - 130px);
@@ -146,7 +154,6 @@ body{
 .message span:first-child{
     padding-right: 3rem;
 }
-
 .chat-messages .message-hour{
     font-size: 0.7rem;
     color: #B1B1B1;
@@ -181,6 +188,7 @@ body{
     position: absolute;
     z-index: 1;
     padding: 0.5rem 0;
+    cursor: pointer;
     display: none;
 }
 .message.sent .info-message{

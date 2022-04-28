@@ -277,6 +277,7 @@ const app = new Vue({
         newmessage: '',
         search: '',
         currentContactId: 1,
+        showChatSetting: false
     },
     methods: {
         deleteMessage(index){
@@ -296,7 +297,6 @@ const app = new Vue({
                 hour: '2-digit',
                 minute: '2-digit',
             });
-            console.log(newTime);
             return newTime
         },
         getRandomInt(max) {
@@ -314,8 +314,12 @@ const app = new Vue({
             };
             this.contacts[this.currentChat].messages.push(reply)
             this.contacts[this.currentChat].ultimoAccesso = 'Online'
-            console.log(this.ultimoAccesso)
             setTimeout(this.changeUltimoAccesso, 3000)
+            Vue.nextTick()
+                .then(function () {
+                    const container = this.querySelector('.chat-messages')
+                    container.scrollTop = container.scrollHeight
+                })
         },
         changeUltimoAccesso(){
             this.contacts[this.currentChat].ultimoAccesso = `Ultimo accesso oggi alle: ${this.contacts[this.currentChat].messages.at(-1).date}`
@@ -333,14 +337,30 @@ const app = new Vue({
                 console.log(this.contacts[this.currentChat].messages);
                 this.newmessage = '';
                 this.contacts[this.currentChat].ultimoAccesso = 'Sta scrivendo..'
-                console.log(this.ultimoAccesso)
                 setTimeout(this.getReply, 2000)
             }
         },
         showChatMobile(){
-            console.log('aa')
             this.contacts[this.currentChat].visible = !this.contacts[this.currentChat].visible
-        }
+        },
+        deleteAllMessage(){
+            this.contacts[this.currentChat].messages.length = 0
+            this.showChatSetting = false
+        },
+        deleteChat(id){
+            const index = this.contacts.findIndex((contact)=>{
+                return contact.id === id
+            }) 
+            if(index === this.contacts.length - 1){
+                this.currentChat = 0
+                this.currentContactId = this.contacts[this.currentChat].id
+            } else {
+                this.currentChat = index 
+                this.currentContactId = id + 1
+            }
+            this.contacts.splice(index, 1)
+            this.showChatSetting = false
+        },
     },
     computed: {
         filteredContacts(){

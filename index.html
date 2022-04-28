@@ -11,13 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <title>Document</title>
+    <title>Vue Boolzapp</title>
+    <link rel="icon" type="image/x-icon" href="img/WhatsApp_icon.png">
 </head>
 <body>
     <div class="main_container">
         <div id="app" class="d-flex">
-            <!-- lista chat -->
+            <!-- left side -->
             <div class="col-12 col-lg-4 d-lg-block cs_border" :class="contacts[currentChat].visible ? 'd-none' : 'd-block'">
+                <!-- profilo -->
                 <div class="header">
                     <div class="d-flex align-items-center">
                         <img src="img/avatar_io.jpg" alt="avatar">
@@ -29,7 +31,7 @@
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
-
+                <!-- attivazione notifiche -->
                 <div class="notifiche">
                     <div class="bell-box">
                         <i class="fa-solid fa-bell-slash"></i>
@@ -39,14 +41,14 @@
                         <span class="text-decoration-underline">Attiva notifiche desktop</span>
                     </div>
                 </div>
-
+                <!-- input ricerca chat -->
                 <div class="input_box input-group">
                     <span class="input-group-text">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
                     <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" v-model="search">
                 </div>
-
+                <!-- lista chat -->
                 <ul class="chats">
                     <li class="chat border-bottom" v-for="(contact, index) in filteredContacts" :class="{active : contact.id === currentContactId}" @click="changeChat(contact.id); showChatMobile()">
                         <div class="d-flex">
@@ -60,7 +62,7 @@
                     </li>
                 </ul>
             </div>
-            <!-- chat -->
+            <!-- right side -->
             <div class="d-lg-block col-12 col-lg-8" :class="contacts[currentChat].visible ? 'd-block' : 'd-none'">
                 <!-- info contatto -->
                 <div class="header chat-header">
@@ -74,18 +76,23 @@
                             <span class="ultimo-accesso">{{contacts[currentChat].ultimoAccesso}}</span>
                         </div>
                     </div>
+                    <!-- icone -->
                     <div class="icons_box">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <i class="fa-solid fa-paperclip"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" @click="showChatSetting = !showChatSetting"></i>
+                        <ul class="info-message" :class="{'d-block' : showChatSetting}">
+                            <li @click=" deleteChat(contacts[currentChat].id)">Elimina Chat</li>
+                            <li @click="deleteAllMessage">Elimina Messaggi</li>
+                        </ul>
                     </div>
                 </div>
-
+                <!-- messaggi -->
                 <div class="chat-messages d-flex flex-column gap-3">
                     <div class="message" v-for="(item,index) in contacts[currentChat].messages" :class="item.status === 'sent' ? 'sent' : 'received'">
                         <span>{{item.message}}</span>
                         <span class="message-hour">{{item.date}}</span>
-                        <span class="dropdown-message" @click="item.showInfo = !item.showInfo">
+                        <div class="dropdown-message" @click="item.showInfo = !item.showInfo">
                             <i class="fa-solid fa-angle-down">
                             </i>
                             <ul class="info-message" :class="{'d-block' : item.showInfo}">
@@ -94,15 +101,17 @@
                                 <li>Messaggio importante</li>
                                 <li @click="deleteMessage(index)">Elimina messaggio</li>
                             </ul>
-                        </span>
+                        </div>
                     </div>
                 </div>
-
+                <!-- footer -->
                 <div class="footer">
                     <div class="emoticon">
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
+                    <!-- input -->
                     <input type="text" class="form-control" placeholder="Scrivi un messaggio" v-model="newmessage" @keyup.enter="sendMessage">
+
                     <div v-if="newmessage.length > 0" class="plane">
                         <i class="fa-solid fa-paper-plane" @click="sendMessage"></i>
                     </div>
