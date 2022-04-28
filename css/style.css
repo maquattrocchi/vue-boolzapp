@@ -6,6 +6,10 @@ body{
 .fa-regular{
     cursor: pointer;
 }
+img{
+    width: 50px;
+    border-radius: 50%;
+}
 .main_container{
     height: 100vh;
     background: linear-gradient(180deg, rgba(0,150,136,1) 15%, rgba(219,219,210,1) 15%);
@@ -17,6 +21,7 @@ body{
     width: 80%;
     height: 90%;
     background-color: #EAEAEA;
+    min-height: 500px;
 }
 /* left side */
 /* header */
@@ -28,10 +33,6 @@ body{
     height: 65px;
     padding: 0 1rem;
     font-size: 1.2rem;
-}
-.header img{
-    width: 50px;
-    border-radius: 50%;
 }
 .cs_border{
     border-right: 1px solid #DBDBD2;
@@ -66,9 +67,6 @@ body{
     text-align: center;
     border-radius: 50%;
 }
-.notifiche p{
-    font-weight: bold;
-}
 /* input */
 .input_box{
     background-color: #FAFAFA;
@@ -88,7 +86,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
     padding: 1rem;
     cursor: pointer;
 }
@@ -99,8 +96,6 @@ body{
     background-color: #d8d8d8;
 }
 .chat img{
-    width: 50px;
-    border-radius: 50%;
     margin-right: 1rem;
 }
 .chat-text p:last-child{
@@ -203,11 +198,17 @@ body{
 .info-message li:hover{
     background-color: #f0f0f0;
 }
+/* tasti font */
+.tasti-font{
+    position: absolute;
+    bottom: 65px;
+    right: 22px;
+    font-size: 1.5rem
+}
 /* footer */
 .footer{
     height: 65px;
     display: flex;
-    justify-content: space-around;
     align-items: center;
 }
 .footer .emoticon, 

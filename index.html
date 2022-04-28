@@ -63,7 +63,7 @@
                 </ul>
             </div>
             <!-- right side -->
-            <div class="d-lg-block col-12 col-lg-8" :class="contacts[currentChat].visible ? 'd-block' : 'd-none'">
+            <div class="d-lg-block col-12 col-lg-8 position-relative" :class="contacts[currentChat].visible ? 'd-block' : 'd-none'">
                 <!-- info contatto -->
                 <div class="header chat-header">
                     <div class="d-flex align-items-center">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <!-- messaggi -->
-                <div class="chat-messages d-flex flex-column gap-3">
+                <div class="chat-messages d-flex flex-column gap-3" :style="{fontSize: fontSize + 'px' }">
                     <div class="message" v-for="(item,index) in contacts[currentChat].messages" :class="item.status === 'sent' ? 'sent' : 'received'">
                         <span>{{item.message}}</span>
                         <span class="message-hour">{{item.date}}</span>
@@ -102,6 +102,14 @@
                                 <li @click="deleteMessage(index)">Elimina messaggio</li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+                <div class="tasti-font">
+                    <div class="tasto" @click="fontSize = fontSize + 1">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="tasto" @click="fontSize = fontSize - 1">
+                        <i class="fa-solid fa-minus"></i>
                     </div>
                 </div>
                 <!-- footer -->

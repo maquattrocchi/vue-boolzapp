@@ -277,7 +277,8 @@ const app = new Vue({
         newmessage: '',
         search: '',
         currentContactId: 1,
-        showChatSetting: false
+        showChatSetting: false,
+        fontSize: 16
     },
     methods: {
         deleteMessage(index){
