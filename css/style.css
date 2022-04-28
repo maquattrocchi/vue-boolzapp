@@ -1,8 +1,11 @@
-/*
-verde sfondo: #009688
-grigio sfondo: #DBDBD2
-grigio chat alto: #EAEAEA
-*/
+body{
+    font-family: 'Lato', sans-serif;
+}
+/* general */
+.fa-solid,
+.fa-regular{
+    cursor: pointer;
+}
 .main_container{
     height: 100vh;
     background: linear-gradient(180deg, rgba(0,150,136,1) 15%, rgba(219,219,210,1) 15%);
@@ -107,19 +110,30 @@ grigio chat alto: #EAEAEA
 }
 /* right side */
 /* chat */
+.chat-header span{
+    display: block;
+}
+.chat-header .ultimo-accesso{
+    font-size: 0.9rem;
+}
+.chat-header .fa-arrow-left{
+    font-size: 1.5rem;
+    padding-right: 1rem;
+}
+/* message */
 .chat-messages{
     height: calc(100% - 130px);
     background-image: url(../img/mine.jpg);
     overflow-y: scroll;
     padding: 2rem;
 }
-/* message */
 .chat-messages .message{
     max-width: 45%;
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 10px;
     position: relative;
     cursor: pointer;
+    border-bottom: 2px solid #B1B1B1;
 }
 .message.sent{
     align-self: flex-end;
@@ -127,7 +141,12 @@ grigio chat alto: #EAEAEA
 }
 .message.received{
     background-color: #fff;
+    align-self: flex-start;
 }
+.message span:first-child{
+    padding-right: 3rem;
+}
+
 .chat-messages .message-hour{
     font-size: 0.7rem;
     color: #B1B1B1;
@@ -141,6 +160,15 @@ grigio chat alto: #EAEAEA
     right: 0.5rem;
     display: none;
     font-size: 1.2rem;
+    animation: show-up 0.2s ease-out;
+}
+@keyframes show-up{
+    from {
+        right: 0;
+    }
+    to {
+        right: 0.5rem;
+    }
 }
 .message:hover .dropdown-message{
     display: block;
@@ -151,10 +179,15 @@ grigio chat alto: #EAEAEA
     background-color: #fff;
     list-style: none;
     position: absolute;
-    right: 0;
     z-index: 1;
     padding: 0.5rem 0;
     display: none;
+}
+.message.sent .info-message{
+    right: 0;
+}
+.message.received .info-message{
+    left: 0;
 }
 .info-message li{
     padding: 0.5rem 1rem;
@@ -174,7 +207,6 @@ grigio chat alto: #EAEAEA
 .footer .fa-paper-plane{
     padding: 0 2rem;
     font-size: 1.5rem;
-    cursor: pointer;
 }
 /* media */
 @media screen and (min-width: 992px) and (max-width: 1200px){

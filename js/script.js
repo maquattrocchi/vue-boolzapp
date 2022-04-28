@@ -6,7 +6,8 @@ const app = new Vue({
                 id: 1,
                 nome: 'Ge',
                 avatar: '_1',
-                visible: true,
+                visible: false,
+                ultimoAccesso: 'Ultimo accesso oggi alle 15:37',
                 messages: [
                     {
                         date: '15:30',
@@ -26,13 +27,14 @@ const app = new Vue({
                         status: 'sent',
                         showInfo: false
                     },
-                ]
+                ],
             },
             {
                 id: 2,
                 nome: 'Ale',
                 avatar: '_2',
-                visible: true,
+                visible: false,
+                ultimoAccesso: 'Ultimo accesso oggi alle 15:33',
                 messages: [
                     {
                         date: '15:30',
@@ -58,13 +60,14 @@ const app = new Vue({
                         status: 'sent',
                         showInfo: false
                     },
-                ]
+                ],
             },
             {
                 id: 3,
                 nome: 'Peppe',
                 avatar: '_3',
-                visible: true,
+                visible: false,
+                ultimoAccesso: 'Ultimo accesso oggi alle 13:37',
                 messages: [
                     {
                         date: '12:30',
@@ -90,13 +93,14 @@ const app = new Vue({
                         status: 'received',
                         showInfo: false
                     },
-                ]
+                ],
             },
             {
                 id: 4,
                 nome: 'Papà',
                 avatar: '_4',
-                visible: true,
+                visible: false,
+                ultimoAccesso: 'Ultimo accesso oggi alle 11:37',
                 messages: [
                     {
                         date: '10:30',
@@ -128,13 +132,14 @@ const app = new Vue({
                         status: 'sent',
                         showInfo: false
                     },
-                ]
+                ],
             },
             {
                 id: 5,
                 nome: 'Myxi',
                 avatar: '_5',
-                visible: true,
+                visible: false,
+                ultimoAccesso: 'Ultimo accesso oggi alle 18:37',
                 messages: [
                     {
                         date: '18:30',
@@ -160,13 +165,14 @@ const app = new Vue({
                         status: 'sent',
                         showInfo: false
                     },
-                ]
+                ],
             },
             {
                 id: 6,
                 nome: 'Ori',
                 avatar: '_6',
-                visible: true,
+                visible: false,
+                ultimoAccesso: 'Ultimo accesso oggi alle 02:31',
                 messages: [
                     {
                         date: '02:30',
@@ -204,13 +210,14 @@ const app = new Vue({
                         status: 'received',
                         showInfo: false
                     },
-                ]
+                ],
             },
             {
                 id: 7,
                 nome: 'Giorgia',
                 avatar: '_7',
-                visible: true,
+                visible: false,
+                ultimoAccesso: 'Ultimo accesso oggi alle 13:22',
                 messages: [
                     {
                         date: '13:20',
@@ -224,13 +231,14 @@ const app = new Vue({
                         status: 'sent',
                         showInfo: false
                     }
-                ]
+                ],
             },
             {
                 id: 8,
                 nome: 'Luca',
                 avatar: '_8',
-                visible: true,
+                visible: false,
+                ultimoAccesso: 'Ultimo accesso oggi alle 17:33',
                 messages: [
                     {
                         date: '17:30',
@@ -262,13 +270,13 @@ const app = new Vue({
                         status: 'sent',
                         showInfo: false
                     },
-                ]
+                ],
             },
         ],
         currentChat: 0,
         newmessage: '',
         search: '',
-        
+        currentContactId: 1,
     },
     methods: {
         deleteMessage(index){
@@ -280,6 +288,7 @@ const app = new Vue({
                 return contact.id === id
             })
             this.currentChat = index
+            this.currentContactId = id
         },
         timeMessage(){
             const date = new Date();
@@ -304,6 +313,13 @@ const app = new Vue({
                 showInfo: false
             };
             this.contacts[this.currentChat].messages.push(reply)
+            this.contacts[this.currentChat].ultimoAccesso = 'Online'
+            console.log(this.ultimoAccesso)
+            setTimeout(this.changeUltimoAccesso, 3000)
+        },
+        changeUltimoAccesso(){
+            this.contacts[this.currentChat].ultimoAccesso = `Ultimo accesso oggi alle: ${this.contacts[this.currentChat].messages.at(-1).date}`
+            console.log(this.ultimoAccesso)
         },
         sendMessage(){
             if(this.newmessage.length > 0){
@@ -316,13 +332,19 @@ const app = new Vue({
                 this.contacts[this.currentChat].messages.push(newMess);
                 console.log(this.contacts[this.currentChat].messages);
                 this.newmessage = '';
-                setTimeout(this.getReply, 1000)
+                this.contacts[this.currentChat].ultimoAccesso = 'Sta scrivendo..'
+                console.log(this.ultimoAccesso)
+                setTimeout(this.getReply, 2000)
             }
         },
+        showChatMobile(){
+            console.log('aa')
+            this.contacts[this.currentChat].visible = !this.contacts[this.currentChat].visible
+        }
     },
     computed: {
         filteredContacts(){
             return this.contacts.filter((contact)=> contact.nome.toLowerCase().includes(this.search.toLowerCase()))
         },
-    }
+    },
 })
